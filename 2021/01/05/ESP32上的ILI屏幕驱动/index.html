@@ -119,7 +119,7 @@
   <div id="content-inner">
     
 <article id="post">
-  <div class="post-page-title"  style="background-color:#26A69A;background-image:url(/images/random/vateral-6.png)" >
+  <div class="post-page-title"  style="background-color:#26A69A;background-image:url(/images/random/vateral-11.png)" >
   <h2>基于ESP32的2.8寸彩屏驱动</h2>
     
   <p>作者:刘依哲 &nbsp&nbsp 发布于:<time datetime="2021-01-05T07:37:56.000Z">
@@ -130,27 +130,119 @@
   </div>
   <div class="post-page-content">
   <h5 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h5><p><font size = 4>  这快2.8寸TFT彩屏是从淘宝买的,分辨率320*240 驱动是ILI9341 接口是SPI,网上找到了32上跑的驱动代码,但是并没有找到ESP的驱动代码,准备自己写一个ESP32使用的ILI9341驱动和一些简单的画图接口</font></p>
-<h5 id="屏幕初始化"><a href="#屏幕初始化" class="headerlink" title="屏幕初始化"></a>屏幕初始化</h5><p><font size = 4>  这个比较容易实现,现在已经有基于stm32的屏幕驱动,可以直接将C代码用python语法重写一遍即可\n</font><br><img src="http://fp1.fghrsh.net/2021/01/05/75856b8e05fe0eca6532896c28d5c6c1.png" alt="alt 文本" title="部分代码截图"></p>
+<h5 id="屏幕初始化"><a href="#屏幕初始化" class="headerlink" title="屏幕初始化"></a>屏幕初始化</h5><p><font size = 4>  这个比较容易实现,现在已经有基于stm32的屏幕驱动,可以直接将C代码用python语法重写一遍即可</font><br><br>    #——————————–初始化即底层代码(部分)——————————————–#<br>    def <strong>init</strong>(self, spi, cs, dc, rst, w, h, r):<br>        self.spi = spi<br>        self.cs = cs<br>        self.dc = dc<br>        self.rst = rst<br>        self.init_width = w<br>        self.init_height = h<br>        self.width = w<br>        self.height = h<br>        self.rotation = r<br>        self.cs.init(self.cs.OUT, value=1)<br>        self.dc.init(self.dc.OUT, value=0)<br>        self.rst.init(self.rst.OUT, value=0)<br>        self.reset()<br>        self.init()<br>    ……………………………………….<br>    def reset(self):<br>        self.rst(0)<br>        time.sleep_ms(50)<br>        self.rst(1)<br>        time.sleep_ms(50)<br>    #写数据<br>    def data(self, data):<br>        self.dc(1)<br>        self.cs(0)<br>        self.spi.write(data)<br>        self.cs(1)<br>    #写命令<br>    def command(self, command):<br>        self.dc(0)<br>        self.cs(0)<br>        self.spi.write(bytearray([command]))<br>        self.cs(1)<br>    #写入块<br>    def writeblock(self, x0, y0, x1, y1):<br>        self.command(CASET)# 列地址设置<br>        self.data(struct.pack(“&gt;HH”, x0, x1))<br>        self.command(PASET)# 页地址设置<br>        self.data(struct.pack(“&gt;HH”, y0, y1))<br>        self.command(RAMWR)# 内存写入<br>    #读取块，返回<br>    def readblock(self, x0, y0, x1, y1):<br>        self.command(CASET)# 列地址设置<br>        self.data(struct.pack(“&gt;HH”, x0, x1))<br>        self.command(PASET)# 页地址设置<br>        self.data(struct.pack(“&gt;HH”, y0, y1))<br>        self.command(RAMRD)# 内存读出<br>        data = self.spi.read((x1 - x0 + 1) * (y1 - y0 + 1) * 3)<br>        return data<br>    #———————————————————————————————#</p>
 <h5 id="添加基本绘图接口"><a href="#添加基本绘图接口" class="headerlink" title="添加基本绘图接口"></a>添加基本绘图接口</h5><p><font size = 4>  利用micro python固件提供的FrameBuffer类,重写该类方法，可以大大节省时间,在ESP内存中创建一个缓冲区，将要写入显存的数据先写入FrameBuffer,最终在show方法中将缓冲区数据通过SPI写入显存</font><br><font color = red size = 4> 注意!这块2.8寸屏的分辨率为320<em>240,而且数据格式为RGB565,即一个像素点需要16个bit,共需要320</em>240*16bit空间，对于ESP32肯定不能一次性写入显存(内存不足),应该多创建几次FrameBuffer分批写入比较合理</font></p>
-<h6 id="1-画点"><a href="#1-画点" class="headerlink" title="1.画点"></a>1.画点</h6><pre><code class="python">    def pixel(self,x,y,c = 0xffff):
-        self.getbuffer(x,y,1,1)
-        self.fb.pixel(0,0,c)  </code></pre>
-<h6 id="2-画线"><a href="#2-画线" class="headerlink" title="2.画线"></a>2.画线</h6><font size = 4> 
-        w = x2-x1
-        h = y2-y1
-        self.getbuffer(x1,y1,w,h)
-        self.fb.line(0,0,w,h,c)
-        self.show() 
-</font> 
-
-<h6 id="3-画矩形"><a href="#3-画矩形" class="headerlink" title="3.画矩形"></a>3.画矩形</h6><font size = 4> 
-        self.getbuffer(x,y,w,h)
-        self.fb.rect(0,0,w,h,c)
-        self.show()  
-</font> 
-
+<h6 id="1-画点"><a href="#1-画点" class="headerlink" title="1.画点"></a>1.画点</h6><pre><code>def pixel(self,x,y,c = 0xffff):
+    self.getbuffer(x,y,1,1)
+    self.fb.pixel(0,0,c)    </code></pre>
+<h6 id="2-画线"><a href="#2-画线" class="headerlink" title="2.画线"></a>2.画线</h6><pre><code>def line(self,x1,y1,x2,y2,c = 0xffff):
+    w = x2-x1
+    h = y2-y1
+    self.getbuffer(x1,y1,w,h)
+    self.fb.line(0,0,w,h,c)
+    self.show()</code></pre>
+<h6 id="3-画矩形"><a href="#3-画矩形" class="headerlink" title="3.画矩形"></a>3.画矩形</h6><pre><code>def rect(self,x,y,w,h,c = 0xffff):
+    self.getbuffer(x,y,w,h)
+    self.fb.rect(0,0,w,h,c)
+    self.show()</code></pre>
 <h6 id="4-填充、擦除、斜线等绘图接口"><a href="#4-填充、擦除、斜线等绘图接口" class="headerlink" title="4.填充、擦除、斜线等绘图接口"></a>4.填充、擦除、斜线等绘图接口</h6><p><font size = 4> 详见<a target="_blank" rel="noopener" href="https://github.com/lyzp">个人github</a></font></p>
-<h5 id="添加高级绘图接口"><a href="#添加高级绘图接口" class="headerlink" title="添加高级绘图接口"></a>添加高级绘图接口</h5><h6 id="1-显示图片"><a href="#1-显示图片" class="headerlink" title="1.显示图片"></a>1.显示图片</h6>
+<h5 id="添加高级绘图接口"><a href="#添加高级绘图接口" class="headerlink" title="添加高级绘图接口 "></a>添加高级绘图接口 <br></h5><h6 id="1-显示图片"><a href="#1-显示图片" class="headerlink" title="1.显示图片"></a>1.显示图片</h6><pre><code>#---------------------------------实现图片(数组)显示由SD卡或网络传输--------------------------------#
+#x,y图片起始显示位置
+#pic_w,pic_h图片宽高
+#图片文件的路径
+def bitmap(self,x,y,pic_w,pic_h,file_name):
+    lines = 6
+    block = pic_w * lines * 2
+    nums = (pic_w * pic_h * 2) // block
+    with open(file_name,&#39;rb&#39;) as fio:
+      for v in range(nums):
+        self.getbuffer(x ,y+v*lines, pic_w ,lines)
+        self.buf = fio.read(block)
+        self.show()
+#实现网络传输图片
+def bitmap_net(self,sock):
+    lines = 6
+    x = int(sock.recv(10))
+    sock.send(b&#39;s&#39;)
+    y = int(sock.recv(10))
+    sock.send(b&#39;s&#39;)
+    pic_w = int(sock.recv(10))
+    sock.send(b&#39;s&#39;)
+    pic_h = int(sock.recv(10))
+    sock.send(b&#39;s&#39;)
+    block = pic_w * lines * 2
+    nums = (pic_w * pic_h * 2) // block
+    for v in range(nums):
+      self.getbuffer(x ,y+v*lines, pic_w ,lines)
+      self.buf = sock.recv(block)
+      self.show()
+      time.sleep_ms(100)#延时等待刷新
+#---------------------------------------------------------------------------------------------#</code></pre>
+<h6 id="2-显示字符"><a href="#2-显示字符" class="headerlink" title="2.显示字符"></a>2.显示字符</h6><pre><code>#--------------------------------字符输入自动换行支持所有字符的输入--------------------------------#        
+
+#功能：传入黑白字库文件，支持自定义字体颜色，速度较慢
+
+def print(self,str,xstart,ystart,fg = 0xffff,bg = 0x0000,font_path=&quot;/sd/utf16.zk&quot;,size=16):
+    def hex2bin(g):#将传入的颜色转为字节串
+      s = hex(g).replace(&quot;0x&quot;,&quot;&quot;)
+      while len(s)&lt;4:s = &#39;0&#39; + s#补全为四位
+      return bytearray([int(s[0:2],16),int(s[2:4],16)])
+    _fg = hex2bin(fg)    #前景色
+    _bg = hex2bin(bg)    #背景色
+    pos_y = ystart
+    charbytes = int((size**2)/8)#一个字符的所占的字节数，是跳转字库指针的最小单位 
+    n = -1#字符计数器，表示当前显示的字符
+
+    max = int(240/size)-1
+    with open(font_path,&#39;rb&#39;) as f:#打开字库
+      for c in str:#分割字符串为字符
+        n = n + 1
+        v = 0#写入buf的计数器，每显示一个字符清零
+        f.seek(ord(c)*charbytes)#跳转到字符c的位置
+        chr_num = f.read(charbytes)#读取字符c,返回此字符对应的点阵数据
+        pos_x = xstart + size * n #y的位置为起始值加上n个字符size
+
+        if pos_x &gt;= 240 - 1.1 * size:#如果当前超出行
+          pos_y = pos_y + size#y位置向下偏移一个size&lt;换行&gt;
+          pos_x = xstart
+          n = -1
+        self.getbuffer(pos_x,pos_y,size,size)#每次显示一个字符
+        for byte in chr_num:#分割一个字符点阵数据为字节，并将整个字符入self.buf等待显示
+          x = bin(byte).replace(&#39;0b&#39;,&#39;&#39;)
+
+          while len(x)&lt;8:#补全为8位
+            x = &#39;0&#39; + x
+          for r in x:#将黑白字符转为彩色字符放在self.buf中
+            if r == &#39;0&#39;:
+              self.buf[0+2*v:2+2*v] = _bg
+            else:
+              self.buf[0+2*v:2+2*v] = _fg
+            v = v + 1
+        self.show()#显示一个字符
+
+#功能：直接传入转化好的RGB565字库,不可改颜色，但速度更快    
+
+def printf(self,str,xstart,ystart,font_path=&quot;/sd/utf16.fzk&quot;,size=16):
+    charbytes = int((size**2)*2)#一个字符的所占的字节数，是跳转字库指针的最小单位 
+    n = -1
+    pos_y = ystart
+    max = int(240/size)-1
+    with open(font_path,&#39;rb&#39;) as f:#打开字库
+      for c in str:#分割字符串为字符
+        n = n + 1
+        pos_x = xstart + size * n #y的位置为起始值加上n个字符size
+        if pos_x &gt;= 240 - 1.1 * size:#如果当前y位置超出屏幕
+          pos_y = pos_y + size#x位置向下偏移一个size&lt;换行&gt;
+          pos_x = xstart
+          n = -1
+        self.getbuffer(pos_x,pos_y,size,size)#每次显示一个字符
+        f.seek(ord(c)*charbytes)#跳转到字符c的位置
+        self.buf = f.read(charbytes)#读取字符c,返回此字符对应的点阵数据
+        self.show()#显示一个字符
+#---------------------------------------------------------------------------------------------#</code></pre>
+<p><font color = bule size = 4> 字库文件通过取模软件生成,并将其格式处理为RGB65 存于内存卡中</font><br><font size = 4> 实现代码如下:</font></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">old = <span class="string">r&#x27;C:\Users\liu\Desktop\22.DZK&#x27;</span></span><br><span class="line">new = <span class="string">r&#x27;C:\Users\liu\Desktop\utf.zk&#x27;</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(old,<span class="string">&#x27;rb&#x27;</span>) <span class="keyword">as</span> fd:</span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(new,<span class="string">&#x27;wb&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">        <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">            a = fd.read(<span class="number">32</span>)</span><br><span class="line">            <span class="keyword">for</span> w <span class="keyword">in</span> a:</span><br><span class="line">                flag = <span class="number">1</span></span><br><span class="line">                x = <span class="built_in">bin</span>(w).replace(<span class="string">&#x27;0b&#x27;</span>,<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">                <span class="keyword">while</span> <span class="built_in">len</span>(x)&lt;<span class="number">8</span>:</span><br><span class="line">                    x = <span class="string">&#x27;0&#x27;</span> + x</span><br><span class="line">                <span class="keyword">for</span> r <span class="keyword">in</span> x:</span><br><span class="line">                    <span class="keyword">if</span> r == <span class="string">&#x27;0&#x27;</span>:</span><br><span class="line">                        f.write(<span class="string">b&#x27;\x00\x00&#x27;</span>)</span><br><span class="line">                    <span class="keyword">else</span>:</span><br><span class="line">                        f.write(<span class="string">b&#x27;\xff\xff&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<h5 id="最终效果"><a href="#最终效果" class="headerlink" title="最终效果"></a>最终效果</h5>
   </div>
   <!--评论块-->
     
@@ -171,7 +263,8 @@
 <div class="post-toc-btn"><i class="material-icons">format_list_numbered</i></div>
 <div class="post-toc-none"><p>(无)</p></div>
 <div class="post-toc-box">
-    <ol class="post-toc"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E5%89%8D%E6%9C%9F%E5%87%86%E5%A4%87"><span class="post-toc-number">1.</span> <span class="post-toc-text">前期准备</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E5%B1%8F%E5%B9%95%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="post-toc-number">2.</span> <span class="post-toc-text">屏幕初始化</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E6%B7%BB%E5%8A%A0%E5%9F%BA%E6%9C%AC%E7%BB%98%E5%9B%BE%E6%8E%A5%E5%8F%A3"><span class="post-toc-number">3.</span> <span class="post-toc-text">添加基本绘图接口</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#1-%E7%94%BB%E7%82%B9"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">1.画点</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#2-%E7%94%BB%E7%BA%BF"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">2.画线</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#3-%E7%94%BB%E7%9F%A9%E5%BD%A2"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">3.画矩形</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#4-%E5%A1%AB%E5%85%85%E3%80%81%E6%93%A6%E9%99%A4%E3%80%81%E6%96%9C%E7%BA%BF%E7%AD%89%E7%BB%98%E5%9B%BE%E6%8E%A5%E5%8F%A3"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">4.填充、擦除、斜线等绘图接口</span></a></li></ol></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E6%B7%BB%E5%8A%A0%E9%AB%98%E7%BA%A7%E7%BB%98%E5%9B%BE%E6%8E%A5%E5%8F%A3"><span class="post-toc-number">4.</span> <span class="post-toc-text">添加高级绘图接口</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#1-%E6%98%BE%E7%A4%BA%E5%9B%BE%E7%89%87"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">1.显示图片</span></a></li></ol></li></ol>
+    <ol class="post-toc"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E5%89%8D%E6%9C%9F%E5%87%86%E5%A4%87"><span class="post-toc-number">1.</span> <span class="post-toc-text">前期准备</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E5%B1%8F%E5%B9%95%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="post-toc-number">2.</span> <span class="post-toc-text">屏幕初始化</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E6%B7%BB%E5%8A%A0%E5%9F%BA%E6%9C%AC%E7%BB%98%E5%9B%BE%E6%8E%A5%E5%8F%A3"><span class="post-toc-number">3.</span> <span class="post-toc-text">添加基本绘图接口</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#1-%E7%94%BB%E7%82%B9"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">1.画点</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#2-%E7%94%BB%E7%BA%BF"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">2.画线</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#3-%E7%94%BB%E7%9F%A9%E5%BD%A2"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">3.画矩形</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#4-%E5%A1%AB%E5%85%85%E3%80%81%E6%93%A6%E9%99%A4%E3%80%81%E6%96%9C%E7%BA%BF%E7%AD%89%E7%BB%98%E5%9B%BE%E6%8E%A5%E5%8F%A3"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">4.填充、擦除、斜线等绘图接口</span></a></li></ol></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E6%B7%BB%E5%8A%A0%E9%AB%98%E7%BA%A7%E7%BB%98%E5%9B%BE%E6%8E%A5%E5%8F%A3"><span class="post-toc-number">4.</span> <span class="post-toc-text">添加高级绘图接口 
+</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#1-%E6%98%BE%E7%A4%BA%E5%9B%BE%E7%89%87"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">1.显示图片</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#2-%E6%98%BE%E7%A4%BA%E5%AD%97%E7%AC%A6"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">2.显示字符</span></a></li></ol></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E6%9C%80%E7%BB%88%E6%95%88%E6%9E%9C"><span class="post-toc-number">5.</span> <span class="post-toc-text">最终效果</span></a></li></ol>
 </div>
 <!--<div class="post-back"><i class="material-icons">arrow_back</i></div>-->
 <script type="text/javascript">
