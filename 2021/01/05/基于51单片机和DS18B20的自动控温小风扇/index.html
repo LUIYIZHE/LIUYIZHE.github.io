@@ -119,7 +119,7 @@
   <div id="content-inner">
     
 <article id="post">
-  <div class="post-page-title"  style="background-color:#26A69A;background-image:url(/images/random/vateral-6.png)" >
+  <div class="post-page-title"  style="background-color:#26A69A;background-image:url(/images/random/vateral-2.png)" >
   <h2>基于51单片机和DS18B20的自动控温小风扇</h2>
     
   <p>作者:刘依哲 &nbsp&nbsp 发布于:<time datetime="2021-01-05T15:46:28.000Z">
@@ -133,8 +133,39 @@
 <h5 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h5><p><font color = blue size = 4>使用DS18B20进行环境温度测量,使用52单片机进行数据读取 <br> 利用PWM和LM298N模块进行风扇的调速(通过温度的变化来调整风速)<br>使用蓝牙通信,通过上位机设定所需维持温度</font><br></p>
 <h5 id="DS18B20模块"><a href="#DS18B20模块" class="headerlink" title="DS18B20模块"></a>DS18B20模块<br></h5><p><font size = 4> DS18B20是常用的数字温度传感器，其输出的是数字信号，具有体积小，硬件开销低，抗干扰能力强，精度高的特点。其只需三条线即可工作</font><br><br><img src="http://fp1.fghrsh.net/2021/01/05/c8f479fce9b3182029fc2b8eb3ef98d1.png" alt="alt 文本"></p>
 <h5 id="硬件搭建"><a href="#硬件搭建" class="headerlink" title="硬件搭建"></a>硬件搭建<br></h5><p><font color = blue size = 4>将各个模块焊接于洞洞板上 最终效果如下</font><br><br><img src="http://fp1.fghrsh.net/2021/01/05/90d77cb661f80ee3fbf00c93b44dbd2f.jpg" alt="alt 文本"></p>
-<h5 id="软件搭建"><a href="#软件搭建" class="headerlink" title="软件搭建"></a>软件搭建<br></h5><p><font color = blue size = 4>第一次使用汇编写52的代码,非常不习惯啊</font><br><br>    T2CON EQU 0C8H<br>    T2MOD EQU 0C9H<br>    TR2 EQU T2CON.2<br>    TF2 EQU T2CON.7<br>    TL2 EQU 0CCH<br>    TH2 EQU 0CDH<br>    RCAP2L EQU 0CAH<br>    RCAP2H EQU 0CBH<br>    T2MODE EQU 0C9H<br>    TARGHT EQU 41H<br>    COUNTER EQU R3<br>    DS18DQ EQU P1.3   //P1.3与DS18DQ等同，便于理解<br>    TEMPH EQU 29H       //保存读出温度的低8位<br>    TEMPL EQU 28H       //保存读出温度的高8位<br>    DS18FLAG EQU 40H  //设置标志<br>    ORG 0000H<br>    ;定时器0中断产生方波用<br>    LJMP START<br>    ORG 000BH<br>    LJMP WAVE<br>    START:    MOV  30H,#00  //设置初始值<br>            MOV  31H,#00<br>            MOV  32H,#00<br>    START1:<br>            MOV TMOD,#21H<br>            MOV TL1,#0F3H<br>            MOV TH1,#0F3H<br>            MOV PCON,#80H<br>            CLR TI<br>            MOV SCON,#50H      </p>
-<pre><code>START2:
+<h5 id="软件搭建"><a href="#软件搭建" class="headerlink" title="软件搭建"></a>软件搭建<br></h5><p><font color = blue size = 4>第一次使用汇编写52的代码,非常不习惯啊</font><br></p>
+<pre><code>T2CON EQU 0C8H
+T2MOD EQU 0C9H
+TR2 EQU T2CON.2
+TF2 EQU T2CON.7
+TL2 EQU 0CCH
+TH2 EQU 0CDH
+RCAP2L EQU 0CAH
+RCAP2H EQU 0CBH    
+T2MODE EQU 0C9H
+TARGHT EQU 41H
+COUNTER EQU R3
+DS18DQ EQU P1.3   //P1.3与DS18DQ等同，便于理解
+TEMPH EQU 29H       //保存读出温度的低8位 
+TEMPL EQU 28H       //保存读出温度的高8位 
+DS18FLAG EQU 40H  //设置标志
+ORG 0000H
+;定时器0中断产生方波用
+LJMP START
+ORG 000BH
+LJMP WAVE
+START:    MOV  30H,#00  //设置初始值
+        MOV  31H,#00
+        MOV  32H,#00 
+START1:        
+        MOV TMOD,#21H    
+        MOV TL1,#0F3H
+        MOV TH1,#0F3H
+        MOV PCON,#80H
+        CLR TI
+        MOV SCON,#50H      
+
+START2:
         MOV TL0,#000H  
         MOV TH0,#0F9H
         SETB TR0
