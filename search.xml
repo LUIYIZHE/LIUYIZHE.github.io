@@ -4,11 +4,11 @@
   
     
     <entry>
-      <title>基于ESP32的天气预报系统</title>
-      <link href="2021/01/05/%E5%9F%BA%E4%BA%8EESP32%E7%9A%84%E5%A4%A9%E6%B0%94%E9%A2%84%E6%8A%A5%E7%B3%BB%E7%BB%9F/"/>
-      <url>2021/01/05/%E5%9F%BA%E4%BA%8EESP32%E7%9A%84%E5%A4%A9%E6%B0%94%E9%A2%84%E6%8A%A5%E7%B3%BB%E7%BB%9F/</url>
+      <title>搭建ESP开发板</title>
+      <link href="2021/01/05/%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AAESP%E5%BC%80%E5%8F%91%E6%9D%BF/"/>
+      <url>2021/01/05/%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AAESP%E5%BC%80%E5%8F%91%E6%9D%BF/</url>
       
-        <content type="html"><![CDATA[<p>#基于ESP32的天气预报系统<br><img src="http://fp1.fghrsh.net/2021/01/05/8e23217277c622936d78cd19d32c3eac.png" alt="alt 图片" title="ESP"></p>]]></content>
+        <content type="html"><![CDATA[<h1 id="搭建一个ESP开发板"><a href="#搭建一个ESP开发板" class="headerlink" title="搭建一个ESP开发板"></a>搭建一个ESP开发板</h1><h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><p>电烙铁 手</p><h2 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h2><p>洞洞板 ESP32最小系统板 0.96OLED 2.8寸TFT彩屏 排针排母若干 各类电源接口<br><img src="http://fp1.fghrsh.net/2021/01/05/998d39775ad4db3975e57a64ab76a8cf.jpg" alt="alt 文本"><br>##最终成果</p>]]></content>
       
       
       <categories>
