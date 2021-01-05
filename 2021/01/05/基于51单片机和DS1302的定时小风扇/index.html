@@ -119,18 +119,18 @@
   <div id="content-inner">
     
 <article id="post">
-  <div class="post-page-title"  style="background-color:#26A69A;background-image:url(/images/random/vateral-14.png)" >
-  <h2>ESP32小玩意</h2>
+  <div class="post-page-title"  style="background-color:#26A69A;background-image:url(/images/random/vateral-1.png)" >
+  <h2>基于51单片机和DS1302的定时小风扇</h2>
     
-  <p>作者:刘依哲 &nbsp&nbsp 发布于:<time datetime="2021-01-05T12:12:46.000Z">
+  <p>作者:刘依哲 &nbsp&nbsp 发布于:<time datetime="2021-01-05T14:07:16.000Z">
           2021-01-05
     </time>
   </p>
     
   </div>
   <div class="post-page-content">
-  <h5 id="基于ESP32的单色OLED播放器"><a href="#基于ESP32的单色OLED播放器" class="headerlink" title="基于ESP32的单色OLED播放器"></a>基于ESP32的单色OLED播放器<br></h5><p><font color = blue size = 4>  使用opencv处理源视频(切片+转灰度图),最终按照oled的显存格式写入oled。由于ESP32自身内存小,故视频源文件应使用网络IO或SD卡IO进行传输</font><br><br><font color = red size = 4>  ESP端</font> <br><br><img src="http://fp1.fghrsh.net/2021/01/05/60df43d554651f94a2ba995b8b203294.png" alt="alt 文本" title="ESP端"><br><br><font color = red size = 4>  PC端</font> <br><br><img src="http://fp1.fghrsh.net/2021/01/05/6ae2a3a09019ae5efd3f315b914a8b1c.png" alt="alt 文本" title="PC端"><br></p>
-<h5 id="基于ESP32的天气预报装置"><a href="#基于ESP32的天气预报装置" class="headerlink" title="基于ESP32的天气预报装置"></a>基于ESP32的天气预报装置<br></h5><p><font color = blue size = 4>  使用京东的天气API并使用ESP32访问该API，解析返回json文件得到天气数据,显示在TFT彩屏上</font>    <br><br><img src="http://fp1.fghrsh.net/2021/01/05/271fda81053f08c03bac155fb58a42b8.png" alt="alt 文本"></p>
+  <h5 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h5><p><font color = blue size = 4>使用DS1302进行时间记录,使用52单片机进行数据读取 <br> 设置4个按键分别控制风速的加减和定时时间的加减<br>利用7个led灯显示定时时间(每灯表示半小时)<br>利用PWM进行风扇的调速</font><br></p>
+<h5 id="DS1302芯片"><a href="#DS1302芯片" class="headerlink" title="DS1302芯片"></a>DS1302芯片<br></h5><p><font color = blue size = 4> DS1302 是 DALLAS 公司推出的涓流充电时钟芯片 内含有一个实时时钟/日历和 31 字节静态 RAM 通过简<br>单的串行接口与单片机进行通信 实时时钟/日历电路提供秒 分 时 日 日期 月 年的信息 每月的天<br>数和闰年的天数可自动调整 时钟操作可通过 AM/PM 指示决定采用 24 或 12 小时格式 DS1302 与单片机之<br>间能简单地采用同步串行的方式进行通信 仅需用到三个口线 1 RES 复位 2 I/O 数据线 3 SCLK<br>串行时钟 时钟/RAM 的读/写数据以一个字节或多达 31 个字节的字符组方式通信 DS1302 工作时功耗很<br>低 保持数据和时钟信息时功率小于 1mW</font><br><br><img src="http://fp1.fghrsh.net/2021/01/05/1e22fd811a86f5f3fa0ddc98d02be557.png" alt="alt 文本"></p>
 
   </div>
   <!--评论块-->
@@ -140,15 +140,11 @@
 <nav class="post-nav">
   <!-- Prev Nav -->
     
-  <a href="/2021/01/05/基于51单片机和DS1302的定时小风扇/" id="post_nav-newer" class="post-nav-content prev-content">
-      新篇
-  </a>
-    
 
 
   <!-- Next Nav -->
     
-  <a href="/2021/01/05/ESP32上的ILI屏幕驱动/" id="post_nav-older" class="post-nav-content next-content">
+  <a href="/2021/01/05/基于ESP32的小玩意/" id="post_nav-older" class="post-nav-content next-content">
       旧篇
   </a>
     
@@ -156,8 +152,7 @@
 <div class="post-toc-btn"><i class="material-icons">format_list_numbered</i></div>
 <div class="post-toc-none"><p>(无)</p></div>
 <div class="post-toc-box">
-    <ol class="post-toc"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E5%9F%BA%E4%BA%8EESP32%E7%9A%84%E5%8D%95%E8%89%B2OLED%E6%92%AD%E6%94%BE%E5%99%A8"><span class="post-toc-number">1.</span> <span class="post-toc-text">基于ESP32的单色OLED播放器
-</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E5%9F%BA%E4%BA%8EESP32%E7%9A%84%E5%A4%A9%E6%B0%94%E9%A2%84%E6%8A%A5%E8%A3%85%E7%BD%AE"><span class="post-toc-number">2.</span> <span class="post-toc-text">基于ESP32的天气预报装置
+    <ol class="post-toc"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E6%83%B3%E6%B3%95"><span class="post-toc-number">1.</span> <span class="post-toc-text">想法</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#DS1302%E8%8A%AF%E7%89%87"><span class="post-toc-number">2.</span> <span class="post-toc-text">DS1302芯片
 </span></a></li></ol>
 </div>
 <!--<div class="post-back"><i class="material-icons">arrow_back</i></div>-->
