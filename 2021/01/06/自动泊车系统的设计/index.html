@@ -118,17 +118,58 @@
 <div id="content-outer">
   <div id="content-inner">
     
+<article id="post">
+  <div class="post-page-title"  style="background-color:#26A69A;background-image:url(/images/random/vateral-8.png)" >
+  <h2>自动泊车系统的设计</h2>
+    
+  <p>作者:刘依哲 &nbsp&nbsp 发布于:<time datetime="2021-01-05T16:17:28.000Z">
+          2021-01-06
+    </time>
+  </p>
+    
+  </div>
+  <div class="post-page-content">
+  <h5 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h5><p><font  size = 4>学完单片机课程后的一次课程设计，也算是对自己学习的知识的一个应用,以前都是用C写的代码这次尝试使用汇编语言实现</font><br></p>
+<h5 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h5><p><font color = blue size = 4>使用DS18B20进行环境温度测量,使用52单片机进行数据读取 <br> 利用PWM和LM298N模块进行风扇的调速(通过温度的变化来调整风速)<br>使用蓝牙通信,通过上位机设定所需维持温度</font><br></p>
+<h5 id="DS18B20模块"><a href="#DS18B20模块" class="headerlink" title="DS18B20模块"></a>DS18B20模块<br></h5><p><font size = 4> DS18B20是常用的数字温度传感器，其输出的是数字信号，具有体积小，硬件开销低，抗干扰能力强，精度高的特点。其只需三条线即可工作</font><br><br><img src="http://fp1.fghrsh.net/2021/01/05/c8f479fce9b3182029fc2b8eb3ef98d1.png" alt="alt 文本"></p>
+<h5 id="硬件搭建"><a href="#硬件搭建" class="headerlink" title="硬件搭建"></a>硬件搭建<br></h5><p><font color = blue size = 4>将各个模块焊接于洞洞板上 最终效果如下</font><br><br><img src="http://fp1.fghrsh.net/2021/01/05/90d77cb661f80ee3fbf00c93b44dbd2f.jpg" alt="alt 文本"></p>
+<h5 id="软件搭建"><a href="#软件搭建" class="headerlink" title="软件搭建"></a>软件搭建<br></h5><p><font color = blue size = 4>第一次使用汇编写52的代码,非常不习惯啊</font><br></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<p><font color = blue size = 4> </font><br></p>
+
+  </div>
+  <!--评论块-->
+    
+
+</article>
+<nav class="post-nav">
+  <!-- Prev Nav -->
+    
+  <a href="/2021/01/06/板球系统设计/" id="post_nav-newer" class="post-nav-content prev-content">
+      新篇
+  </a>
+    
 
 
-<div class="tags">
-  
-    <div id="archive">
-        
-          <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ESP32/" rel="tag">ESP32</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/STC52/" rel="tag">STC52</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/STM32/" rel="tag">STM32</a></li></ul>
-        
-    </div>
-  
-
+  <!-- Next Nav -->
+    
+  <a href="/2021/01/05/基于51单片机和DS18B20的自动控温小风扇/" id="post_nav-older" class="post-nav-content next-content">
+      旧篇
+  </a>
+    
+</nav>
+<div class="post-toc-btn"><i class="material-icons">format_list_numbered</i></div>
+<div class="post-toc-none"><p>(无)</p></div>
+<div class="post-toc-box">
+    <ol class="post-toc"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E8%B5%B7%E5%9B%A0"><span class="post-toc-number">1.</span> <span class="post-toc-text">起因</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E6%83%B3%E6%B3%95"><span class="post-toc-number">2.</span> <span class="post-toc-text">想法</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#DS18B20%E6%A8%A1%E5%9D%97"><span class="post-toc-number">3.</span> <span class="post-toc-text">DS18B20模块
+</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E7%A1%AC%E4%BB%B6%E6%90%AD%E5%BB%BA"><span class="post-toc-number">4.</span> <span class="post-toc-text">硬件搭建
+</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E8%BD%AF%E4%BB%B6%E6%90%AD%E5%BB%BA"><span class="post-toc-number">5.</span> <span class="post-toc-text">软件搭建
+</span></a></li></ol>
+</div>
+<!--<div class="post-back"><i class="material-icons">arrow_back</i></div>-->
+<script type="text/javascript">
+    menu();
+</script>
   </div>
 </div>
 <div id="bottom-outer">
