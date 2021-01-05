@@ -119,7 +119,7 @@
   <div id="content-inner">
     
 <article id="post">
-  <div class="post-page-title"  style="background-color:#26A69A;background-image:url(/images/random/vateral-18.png)" >
+  <div class="post-page-title"  style="background-color:#26A69A;background-image:url(/images/random/vateral-1.png)" >
   <h2>基于ESP32的2.8寸彩屏驱动</h2>
     
   <p>作者:刘依哲 &nbsp&nbsp 发布于:<time datetime="2021-01-05T07:37:56.000Z">
@@ -133,9 +133,11 @@
 <h5 id="屏幕初始化"><a href="#屏幕初始化" class="headerlink" title="屏幕初始化"></a>屏幕初始化</h5><p><font size = 4>  这个比较容易实现,现在已经有基于stm32的屏幕驱动,可以直接将C代码用python语法重写一遍即可</font><br><img src="http://fp1.fghrsh.net/2021/01/05/75856b8e05fe0eca6532896c28d5c6c1.png" alt="alt 文本" title="部分代码截图"></p>
 <h5 id="添加基本绘图接口"><a href="#添加基本绘图接口" class="headerlink" title="添加基本绘图接口"></a>添加基本绘图接口</h5><p><font size = 4>  利用micro python固件提供的FrameBuffer类,重写该类方法，可以大大节省时间,在ESP内存中创建一个缓冲区，将要写入显存的数据先写入FrameBuffer,最终在show方法中将缓冲区数据通过SPI写入显存</font><br><font color = red size = 4> 注意!这块2.8寸屏的分辨率为320<em>240,而且数据格式为RGB565,即一个像素点需要16个bit,共需要320</em>240*16bit空间，对于ESP32肯定不能一次性写入显存(内存不足),应该多创建几次FrameBuffer分批写入比较合理</font></p>
 <h6 id="1-画点"><a href="#1-画点" class="headerlink" title="1.画点"></a>1.画点</h6><font size = 4> 
+'''python
     def pixel(self,x,y,c = 0xffff):
         self.getbuffer(x,y,1,1)
-        self.fb.pixel(0,0,c)    
+        self.fb.pixel(0,0,c)  
+'''  
 </font> 
 
 <h6 id="2-画线"><a href="#2-画线" class="headerlink" title="2.画线"></a>2.画线</h6><font size = 4> 
