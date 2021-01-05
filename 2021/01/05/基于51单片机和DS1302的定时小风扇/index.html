@@ -119,7 +119,7 @@
   <div id="content-inner">
     
 <article id="post">
-  <div class="post-page-title"  style="background-color:#26A69A;background-image:url(/images/random/vateral-1.png)" >
+  <div class="post-page-title"  style="background-color:#26A69A;background-image:url(/images/random/vateral-18.png)" >
   <h2>基于51单片机和DS1302的定时小风扇</h2>
     
   <p>作者:刘依哲 &nbsp&nbsp 发布于:<time datetime="2021-01-05T14:07:16.000Z">
@@ -129,8 +129,9 @@
     
   </div>
   <div class="post-page-content">
-  <h5 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h5><p><font color = blue size = 4>使用DS1302进行时间记录,使用52单片机进行数据读取 <br> 设置4个按键分别控制风速的加减和定时时间的加减<br>利用7个led灯显示定时时间(每灯表示半小时)<br>利用PWM进行风扇的调速</font><br></p>
-<h5 id="DS1302芯片"><a href="#DS1302芯片" class="headerlink" title="DS1302芯片"></a>DS1302芯片<br></h5><p><font color = blue size = 4> DS1302 是 DALLAS 公司推出的涓流充电时钟芯片 内含有一个实时时钟/日历和 31 字节静态 RAM 通过简<br>单的串行接口与单片机进行通信 实时时钟/日历电路提供秒 分 时 日 日期 月 年的信息 每月的天<br>数和闰年的天数可自动调整 时钟操作可通过 AM/PM 指示决定采用 24 或 12 小时格式 DS1302 与单片机之<br>间能简单地采用同步串行的方式进行通信 仅需用到三个口线 1 RES 复位 2 I/O 数据线 3 SCLK<br>串行时钟 时钟/RAM 的读/写数据以一个字节或多达 31 个字节的字符组方式通信 DS1302 工作时功耗很<br>低 保持数据和时钟信息时功率小于 1mW</font><br><br><img src="http://fp1.fghrsh.net/2021/01/05/1e22fd811a86f5f3fa0ddc98d02be557.png" alt="alt 文本"></p>
+  <h5 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h5><p><font color = blue size = 4>使用DS1302进行时间记录,使用52单片机进行数据读取 <br> 设置4个按键分别控制风速的加减和定时时间的加减<br>利用7个led灯显示定时时间(每灯表示半小时)<br>利用PWM和LM298N模块进行风扇的调速</font><br></p>
+<h5 id="DS1302芯片"><a href="#DS1302芯片" class="headerlink" title="DS1302芯片"></a>DS1302芯片<br></h5><p><font size = 4> DS1302 是 DALLAS 公司推出的涓流充电时钟芯片 内含有一个实时时钟/日历和 31 字节静态 RAM 通过简单的串行接口与单片机进行通信 实时时钟/日历电路提供秒 分 时 日 日期 月 年的信息 每月的天数和闰年的天数可自动调整 时钟操作可通过 AM/PM 指示决定采用 24 或 12 小时格式 DS1302 与单片机之间能简单地采用同步串行的方式进行通信 仅需用到三个口线 1 RES 复位 2 I/O 数据线 3 SCLK串行时钟 时钟/RAM 的读/写数据以一个字节或多达 31 个字节的字符组方式通信 DS1302 工作时功耗很低 保持数据和时钟信息时功率小于 1mW</font><br><br><img src="http://fp1.fghrsh.net/2021/01/05/1e22fd811a86f5f3fa0ddc98d02be557.png" alt="alt 文本"></p>
+<h5 id="硬件搭建"><a href="#硬件搭建" class="headerlink" title="硬件搭建"></a>硬件搭建<br></h5><p><font color = blue size = 4>最终硬件搭建效果如下</font><br><br><img src="http://fp1.fghrsh.net/2021/01/05/cd5b5b8bd539429642c1e82bd390fac3.jpg" alt="alt 文本"></p>
 
   </div>
   <!--评论块-->
@@ -153,6 +154,7 @@
 <div class="post-toc-none"><p>(无)</p></div>
 <div class="post-toc-box">
     <ol class="post-toc"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E6%83%B3%E6%B3%95"><span class="post-toc-number">1.</span> <span class="post-toc-text">想法</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#DS1302%E8%8A%AF%E7%89%87"><span class="post-toc-number">2.</span> <span class="post-toc-text">DS1302芯片
+</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E7%A1%AC%E4%BB%B6%E6%90%AD%E5%BB%BA"><span class="post-toc-number">3.</span> <span class="post-toc-text">硬件搭建
 </span></a></li></ol>
 </div>
 <!--<div class="post-back"><i class="material-icons">arrow_back</i></div>-->
