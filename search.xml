@@ -8,19 +8,19 @@
       <link href="2021/01/06/%E8%BF%9B%E5%87%BA%E9%97%A8%E6%92%AD%E6%8A%A5/"/>
       <url>2021/01/06/%E8%BF%9B%E5%87%BA%E9%97%A8%E6%92%AD%E6%8A%A5/</url>
       
-        <content type="html"><![CDATA[<h5 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h5>]]></content>
+        <content type="html"><![CDATA[<h5 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h5><p><font  color = blue size = 4>前几天出去看到外面店里有可以识别有人进出门的小玩意，想着自己回来实现一下<br></font><br><br><font  size = 4>没用单片机,本来打算采用两个红外循迹模块A和B,若是先触发A在触发B则发出一个电平信号1，判断为有人进门，播放进门欢迎词。若是先触发B在触发A则发出一个电平信号0，判断为有人出门，播放出门欢迎词。但是最因为宿舍的门上不好安装，最终只是实现了最简版，等有时间在把这个补全<br></font><br></p><h5 id="语音播报模块"><a href="#语音播报模块" class="headerlink" title="语音播报模块"></a>语音播报模块<br></h5><p><font  size = 4> 负责根据电平信号播放不同音乐。</font><br><br><img src="http://fp1.fghrsh.net/2021/01/07/41abaaa2bc3e4a33c36c841fe49325b6.png" alt="41abaaa2bc3e4a33c36c841fe49325b6.png"></p><h5 id="最终效果"><a href="#最终效果" class="headerlink" title="最终效果"></a>最终效果<br></h5><p><img src="http://fp1.fghrsh.net/2021/01/07/0540c6daff2a6857fc87da3d198da85d.jpg" alt="0540c6daff2a6857fc87da3d198da85d.jpg"><br></p><p><font  color = red size = 4>为了节省整个装置体积,使用的是手机上拆下的小扬声器</font><br></p>]]></content>
       
       
       <categories>
           
-          <category> 单片机 </category>
+          <category> 硬件 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> STM32 </tag>
+            <tag> 语音模块 </tag>
             
         </tags>
       
