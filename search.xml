@@ -4,31 +4,6 @@
   
     
     <entry>
-      <title>平衡小车搭建与调试</title>
-      <link href="2021/01/06/%E5%B9%B3%E8%A1%A1%E5%B0%8F%E8%BD%A6%E6%90%AD%E5%BB%BA%E4%B8%8E%E8%B0%83%E8%AF%95/"/>
-      <url>2021/01/06/%E5%B9%B3%E8%A1%A1%E5%B0%8F%E8%BD%A6%E6%90%AD%E5%BB%BA%E4%B8%8E%E8%B0%83%E8%AF%95/</url>
-      
-        <content type="html"><![CDATA[<h5 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h5>]]></content>
-      
-      
-      <categories>
-          
-          <category> 单片机 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> STM32 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>进出门播报</title>
       <link href="2021/01/06/%E8%BF%9B%E5%87%BA%E9%97%A8%E6%92%AD%E6%8A%A5/"/>
       <url>2021/01/06/%E8%BF%9B%E5%87%BA%E9%97%A8%E6%92%AD%E6%8A%A5/</url>
@@ -104,36 +79,11 @@
     
     
     <entry>
-      <title>板球系统设计</title>
-      <link href="2021/01/06/%E6%9D%BF%E7%90%83%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/"/>
-      <url>2021/01/06/%E6%9D%BF%E7%90%83%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/</url>
+      <title>科创实验室总结</title>
+      <link href="2021/01/06/%E5%AE%9E%E9%AA%8C%E5%AE%A4%E6%80%BB%E7%BB%93/"/>
+      <url>2021/01/06/%E5%AE%9E%E9%AA%8C%E5%AE%A4%E6%80%BB%E7%BB%93/</url>
       
-        <content type="html"><![CDATA[<h5 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h5>]]></content>
-      
-      
-      <categories>
-          
-          <category> 单片机 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> STM32 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>自动泊车系统的设计</title>
-      <link href="2021/01/06/%E8%87%AA%E5%8A%A8%E6%B3%8A%E8%BD%A6%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%AE%BE%E8%AE%A1/"/>
-      <url>2021/01/06/%E8%87%AA%E5%8A%A8%E6%B3%8A%E8%BD%A6%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%AE%BE%E8%AE%A1/</url>
-      
-        <content type="html"><![CDATA[<h5 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h5><p><font  size = 4>学完单片机课程后的一次课程设计，也算是对自己学习的知识的一个应用,以前都是用C写的代码这次尝试使用汇编语言实现</font><br></p><h5 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h5><p><font color = blue size = 4>使用DS18B20进行环境温度测量,使用52单片机进行数据读取 <br> 利用PWM和LM298N模块进行风扇的调速(通过温度的变化来调整风速)<br>使用蓝牙通信,通过上位机设定所需维持温度</font><br></p><h5 id="DS18B20模块"><a href="#DS18B20模块" class="headerlink" title="DS18B20模块"></a>DS18B20模块<br></h5><p><font size = 4> DS18B20是常用的数字温度传感器，其输出的是数字信号，具有体积小，硬件开销低，抗干扰能力强，精度高的特点。其只需三条线即可工作</font><br><br><img src="http://fp1.fghrsh.net/2021/01/05/c8f479fce9b3182029fc2b8eb3ef98d1.png" alt="alt 文本"></p><h5 id="硬件搭建"><a href="#硬件搭建" class="headerlink" title="硬件搭建"></a>硬件搭建<br></h5><p><font color = blue size = 4>将各个模块焊接于洞洞板上 最终效果如下</font><br><br><img src="http://fp1.fghrsh.net/2021/01/05/90d77cb661f80ee3fbf00c93b44dbd2f.jpg" alt="alt 文本"></p><h5 id="软件搭建"><a href="#软件搭建" class="headerlink" title="软件搭建"></a>软件搭建<br></h5><p><font color = blue size = 4>第一次使用汇编写52的代码,非常不习惯啊</font><br></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure><p><font color = blue size = 4> </font><br></p>]]></content>
+        <content type="html"><![CDATA[<h5 id="说点废话"><a href="#说点废话" class="headerlink" title="说点废话"></a>说点废话</h5><p><font  size = 4>在实验室呆了几年了,还记得大一刚来实验室的第一个任务是做RS触发器学习C语言,还有用NE555设计方波发生器，当时连C语言编译环境都搭建半天，第一次焊接洞洞板也是很别扭，之后又接触到单片机，先学的51单片机，第一步是搭建最小系统板，随后在这个板子上完成实验室的每周任务，每个周六都要去考核，现在想起来还觉得挺有意思，不过U1S1当时去考核还是相当紧张的生怕自己被刷掉,不过还好到大一结束十几次任务每次都过了，终于成为一名科创班的正式成员了😁最后在大二又接触32单片机，打开了新世界的大门,32的运行速度更快，可以运行一些运算量大的程序，还接触到了树莓派，ESP32，msp430等等芯片。编程语言也从只会C进步到学习了python java ,python让我体会到了编程的快乐，它的语法简单库也很多,当时有个学长带我们搞计算机视觉，我当时选了一个手势识别的题目，为了完成这个题目，先后学了numpy矩阵运算库 opencv 视觉处理库还有Keras TS等智能算法库，照着别人的代码搭建了模型，为了加快训练速度还学了python的多进程、线程、协程等机制(虽然最后没用上🤦‍♂️)</font><br><br><font  size = 4>最后还是要感谢实验室给我提供这么好的平台，总之在实验室学到了很多东西除了技术上的东西还有一些与人相处的道理</font><br></p><h5 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h5><p><font color = blue size = 4>使用DS18B20进行环境温度测量,使用52单片机进行数据读取 <br> 利用PWM和LM298N模块进行风扇的调速(通过温度的变化来调整风速)<br>使用蓝牙通信,通过上位机设定所需维持温度</font><br></p><h5 id="DS18B20模块"><a href="#DS18B20模块" class="headerlink" title="DS18B20模块"></a>DS18B20模块<br></h5><p><font size = 4> DS18B20是常用的数字温度传感器，其输出的是数字信号，具有体积小，硬件开销低，抗干扰能力强，精度高的特点。其只需三条线即可工作</font><br><br><img src="http://fp1.fghrsh.net/2021/01/05/c8f479fce9b3182029fc2b8eb3ef98d1.png" alt="alt 文本"></p><h5 id="硬件搭建"><a href="#硬件搭建" class="headerlink" title="硬件搭建"></a>硬件搭建<br></h5><p><font color = blue size = 4>将各个模块焊接于洞洞板上 最终效果如下</font><br><br><img src="http://fp1.fghrsh.net/2021/01/05/90d77cb661f80ee3fbf00c93b44dbd2f.jpg" alt="alt 文本"></p><h5 id="软件搭建"><a href="#软件搭建" class="headerlink" title="软件搭建"></a>软件搭建<br></h5><p><font color = blue size = 4>第一次使用汇编写52的代码,非常不习惯啊</font><br><br>之后又自己做了一辆平衡小车，学习了pid算法，还搞过板球系统，起始其本质和平衡车差不多还是pid算法，就是传感器从陀螺仪变成了摄像头</p>]]></content>
       
       
       <categories>

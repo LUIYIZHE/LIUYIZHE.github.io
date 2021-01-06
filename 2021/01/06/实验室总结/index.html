@@ -85,14 +85,14 @@
 
 <ul class="dropdown-menu dropdown" >
     <li class="nav-dropdown-list">
-        <a class="archive-link" href="/archives/2021/01/">January 2021<span class="archive-count">11</span></a>
+        <a class="archive-link" href="/archives/2021/01/">January 2021<span class="archive-count">9</span></a>
     </li>
 </ul>
 <!--categories-->
 
 <ul class="dropdown-menu dropdown" >
     <li class="nav-dropdown-list">
-        <a class="category-link" href="/categories/%E5%8D%95%E7%89%87%E6%9C%BA/">单片机<span class="category-count">11</span></a>
+        <a class="category-link" href="/categories/%E5%8D%95%E7%89%87%E6%9C%BA/">单片机<span class="category-count">9</span></a>
     </li>
 </ul>
 <!--tags-->
@@ -119,17 +119,22 @@
   <div id="content-inner">
     
 <article id="post">
-  <div class="post-page-title"  style="background-color:#26A69A;background-image:url(/images/random/vateral-4.png)" >
-  <h2>板球系统设计</h2>
+  <div class="post-page-title"  style="background-color:#26A69A;background-image:url(/images/random/vateral-15.png)" >
+  <h2>科创实验室总结</h2>
     
-  <p>作者:刘依哲 &nbsp&nbsp 发布于:<time datetime="2021-01-05T16:19:25.000Z">
+  <p>作者:刘依哲 &nbsp&nbsp 发布于:<time datetime="2021-01-05T16:17:28.000Z">
           2021-01-06
     </time>
   </p>
     
   </div>
   <div class="post-page-content">
-  <h5 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h5>
+  <h5 id="说点废话"><a href="#说点废话" class="headerlink" title="说点废话"></a>说点废话</h5><p><font  size = 4>在实验室呆了几年了,还记得大一刚来实验室的第一个任务是做RS触发器学习C语言,还有用NE555设计方波发生器，当时连C语言编译环境都搭建半天，第一次焊接洞洞板也是很别扭，之后又接触到单片机，先学的51单片机，第一步是搭建最小系统板，随后在这个板子上完成实验室的每周任务，每个周六都要去考核，现在想起来还觉得挺有意思，不过U1S1当时去考核还是相当紧张的生怕自己被刷掉,不过还好到大一结束十几次任务每次都过了，终于成为一名科创班的正式成员了😁最后在大二又接触32单片机，打开了新世界的大门,32的运行速度更快，可以运行一些运算量大的程序，还接触到了树莓派，ESP32，msp430等等芯片。编程语言也从只会C进步到学习了python java ,python让我体会到了编程的快乐，它的语法简单库也很多,当时有个学长带我们搞计算机视觉，我当时选了一个手势识别的题目，为了完成这个题目，先后学了numpy矩阵运算库 opencv 视觉处理库还有Keras TS等智能算法库，照着别人的代码搭建了模型，为了加快训练速度还学了python的多进程、线程、协程等机制(虽然最后没用上🤦‍♂️)</font><br><br><font  size = 4>最后还是要感谢实验室给我提供这么好的平台，总之在实验室学到了很多东西除了技术上的东西还有一些与人相处的道理</font><br></p>
+<h5 id="想法"><a href="#想法" class="headerlink" title="想法"></a>想法</h5><p><font color = blue size = 4>使用DS18B20进行环境温度测量,使用52单片机进行数据读取 <br> 利用PWM和LM298N模块进行风扇的调速(通过温度的变化来调整风速)<br>使用蓝牙通信,通过上位机设定所需维持温度</font><br></p>
+<h5 id="DS18B20模块"><a href="#DS18B20模块" class="headerlink" title="DS18B20模块"></a>DS18B20模块<br></h5><p><font size = 4> DS18B20是常用的数字温度传感器，其输出的是数字信号，具有体积小，硬件开销低，抗干扰能力强，精度高的特点。其只需三条线即可工作</font><br><br><img src="http://fp1.fghrsh.net/2021/01/05/c8f479fce9b3182029fc2b8eb3ef98d1.png" alt="alt 文本"></p>
+<h5 id="硬件搭建"><a href="#硬件搭建" class="headerlink" title="硬件搭建"></a>硬件搭建<br></h5><p><font color = blue size = 4>将各个模块焊接于洞洞板上 最终效果如下</font><br><br><img src="http://fp1.fghrsh.net/2021/01/05/90d77cb661f80ee3fbf00c93b44dbd2f.jpg" alt="alt 文本"></p>
+<h5 id="软件搭建"><a href="#软件搭建" class="headerlink" title="软件搭建"></a>软件搭建<br></h5><p><font color = blue size = 4>第一次使用汇编写52的代码,非常不习惯啊</font><br><br>之后又自己做了一辆平衡小车，学习了pid算法，还搞过板球系统，起始其本质和平衡车差不多还是pid算法，就是传感器从陀螺仪变成了摄像头</p>
+
   </div>
   <!--评论块-->
     
@@ -146,7 +151,7 @@
 
   <!-- Next Nav -->
     
-  <a href="/2021/01/06/自动泊车系统的设计/" id="post_nav-older" class="post-nav-content next-content">
+  <a href="/2021/01/05/基于51单片机和DS18B20的自动控温小风扇/" id="post_nav-older" class="post-nav-content next-content">
       旧篇
   </a>
     
@@ -154,7 +159,10 @@
 <div class="post-toc-btn"><i class="material-icons">format_list_numbered</i></div>
 <div class="post-toc-none"><p>(无)</p></div>
 <div class="post-toc-box">
-    <ol class="post-toc"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E8%B5%B7%E5%9B%A0"><span class="post-toc-number">1.</span> <span class="post-toc-text">起因</span></a></li></ol>
+    <ol class="post-toc"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E8%AF%B4%E7%82%B9%E5%BA%9F%E8%AF%9D"><span class="post-toc-number">1.</span> <span class="post-toc-text">说点废话</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E6%83%B3%E6%B3%95"><span class="post-toc-number">2.</span> <span class="post-toc-text">想法</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#DS18B20%E6%A8%A1%E5%9D%97"><span class="post-toc-number">3.</span> <span class="post-toc-text">DS18B20模块
+</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E7%A1%AC%E4%BB%B6%E6%90%AD%E5%BB%BA"><span class="post-toc-number">4.</span> <span class="post-toc-text">硬件搭建
+</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E8%BD%AF%E4%BB%B6%E6%90%AD%E5%BB%BA"><span class="post-toc-number">5.</span> <span class="post-toc-text">软件搭建
+</span></a></li></ol>
 </div>
 <!--<div class="post-back"><i class="material-icons">arrow_back</i></div>-->
 <script type="text/javascript">
