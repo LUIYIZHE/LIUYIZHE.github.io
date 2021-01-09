@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  
+  <meta name="keywords" content="个人博客">
+  <meta name="description" content="网站简介">
+  
+  <title>欢迎来到我的博客</title>
+  
+    <!-- stylesheets list from config.yml -->
+    
+      <link rel="stylesheet" href="/css/materialize.min.css">
+    
+      <link rel="stylesheet" href="/css/main.min.css">
+    
+  
+  <style type="text/css">
+      html{
+          font-family: sans-serif;
+          font-weight: 300;
+      }
+      @font-face {
+          font-family: 'Material Icons';
+          font-style: normal;
+          font-weight: 400;
+          src: url(/fonts/MaterialIcons-Regular.eot);
+          src: url(/fonts/MaterialIcons-Regular.woff2) format('woff2'),
+          url(/fonts/MaterialIcons-Regular.woff) format('woff'),
+          url(/fonts/MaterialIcons-Regular.ttf) format('truetype')
+      }
+  </style>
+<link rel="shortcut icon" href="/source/favicon.ico">
+<meta name="generator" content="Hexo 5.3.0"></head>
+<body>
+<div id="menu-box"><a href="javascript:void(0)" id="menu" data-activates="slide-out" class="button-collapse menu" ><span class="nav-btn"></span></a></div>
+<div id="menu-outer">
+  <div id="menu-inner">
+      <ul id="slide-out" class="side-nav" >
+    <div class="nav-header"  style="background-image: url(/images/header-bg.png);background-color:#26A69A">
+    <div class="header-box"><img src="/images/header.png" ondragstart="return false;"></div>
+    <p>刘依哲</p>
+    <div class="nav-link">
+        
+        <a href="http://example.com" target="_blank"> <div class="link-box twitter"></div></a>
+        
+        
+        <a  href="https://github.com/lyzp" target="_blank"><div class="link-box github"></div></a>
+        
+        
+        <a href="mailto:1412794418@qq.com"><div class="link-box email"></div></a>
+        
+        
+        <a href="http://example.com" target="_blank"><div class="link-box weibo"></div></a>
+        
+        
+        <a href="http://example.com" target="_blank"> <div class="link-box zhihu"></div></a>
+        
+    </div>
+    <div class="nav-search">
+        <form id="search-form"> <!-- 搜索框相关 -->
+            <input type="text" id="local-search-input" name="q" results="0" placeholder="搜索..." class="search form-control" autocomplete="off" autocorrect="off"/>
+            <div class="nav-search-img"><i class="material-icons">search</i></div>
+        </form>
+        <div id="local-search-result"></div> <!-- 搜索结果区 -->
+        <p class='no-result'>无搜索结果</p>
+    </div>
+</div>
+    <!--Homepage-->
+
+<li class="nav-list">
+    <a href="/" target="_self">
+        <div class="nav-ico"><i class="material-icons">home</i> </div><p>主页</p>
+    </a>
+</li>
+
+<!--archives-->
+
+<li class="nav-list dropdown-btn">
+    <a  class=""  target="_self">
+        <div class="nav-ico"><i class="material-icons">assignment</i></div><p>归档</p><div class="dropdown-ico"><i class="material-icons">arrow_drop_down</i></div>
+    </a>
+</li>
+
+<ul class="dropdown-menu dropdown" >
+    <li class="nav-dropdown-list">
+        <a class="archive-link" href="/archives/2021/01/">January 2021<span class="archive-count">9</span></a>
+    </li>
+</ul>
+<!--categories-->
+
+<ul class="dropdown-menu dropdown" >
+    <li class="nav-dropdown-list">
+        <a class="category-link" href="/categories/%E5%8D%95%E7%89%87%E6%9C%BA/">单片机<span class="category-count">7</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/%E7%A1%AC%E4%BB%B6/">硬件<span class="category-count">1</span></a></li><li class="nav-dropdown-list"><a class="category-link" href="/categories/%E8%BD%AF%E4%BB%B6/">软件<span class="category-count">1</span></a>
+    </li>
+</ul>
+<!--tags-->
+
+<li class="nav-list">
+    <a href="/archives" target="_self">
+        <div class="nav-ico"><i class="material-icons">bookmark</i> </div><p>标签</p>
+    </a>
+</li>
+
+<!--photo-->
+
+<!--friends-->
+
+<!--about-->
+
+
+</ul>
+
+  </div>
+</div>
+
+<div id="content-outer">
+  <div id="content-inner">
+    
+<article id="post">
+  <div class="post-page-title"  style="background-color:#26A69A;background-image:url(/images/random/vateral-12.png)" >
+  <h2>Android学习</h2>
+    
+  <p>作者:刘依哲 &nbsp&nbsp 发布于:<time datetime="2021-01-08T10:27:49.000Z">
+          2021-01-08
+    </time>
+  </p>
+    
+  </div>
+  <div class="post-page-content">
+  <h5 id="安装与环境配置"><a href="#安装与环境配置" class="headerlink" title="安装与环境配置"></a>安装与环境配置</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&gt;安装JDK(12)</span><br><span class="line">&gt;安装Android Studio</span><br><span class="line">&gt;下载SDK(已有SDK则可选择SDK,无SDK则下载至指定文件夹)</span><br><span class="line">&gt;配置AS</span><br><span class="line">  A.AS缓存</span><br><span class="line">    ·功能：缓存一些数据存放配置、插件缓存文件夹、最近打开的项目</span><br><span class="line">    ·配置：默认AS将缓存放在C:\Users\登录名\.AndroidStudio下，只需找到安装目录\bin\idea.properties文件修改idea.config.&#x2F;system.path为目标缓存路径(去掉注释)重启AS后删除删除原.AndroidStudio文件夹即可</span><br><span class="line">    ·注意：重启AS会询问是否导入之前设置，应选择import然后选择原.AndroidStudio文件夹导入</span><br><span class="line">  B.gradle框架</span><br><span class="line">    ·功能: 用于构建app的框架</span><br><span class="line">    ·配置: 默认gradle框架是在C:\Users\登录名\.gradle中，只需要在环境变量里面配置GRADLE_USER_HOME为目标路径，重启AS后删除原.gradle文件夹即可</span><br><span class="line">  C.AVD虚拟机</span><br><span class="line">    ·功能: 用于模拟安卓机</span><br><span class="line">    ·配置: 默认AVD虚拟机放在C:\Users\登录名\.android\avd中,只需环境变量配置ANDROID_SDK_HOME变量为存放.Android文件夹的路径(不包括.Android文件夹)并删除原.android文件夹即可</span><br><span class="line">    ·注意若原.android文件夹中有虚拟机则可以把虚拟机移到新的.android文件夹中，并打开.android\avd下对应虚拟机的,ini文件编辑路径为新的.android文件夹路径</span><br></pre></td></tr></table></figure>
+
+
+<h5 id="学习笔记-入门"><a href="#学习笔记-入门" class="headerlink" title="学习笔记(入门)"></a>学习笔记(入门)<br></h5><p><font  color = blue size = 4>一边通过网络学习android编程一边自己整理笔记，记录各个文件的作用,控件的方法等等学习心得，便于日后复习</font><br></p>
+<p><img src="http://fp1.fghrsh.net/2021/01/09/caa9efdca364b28a05924db46861712a.png" alt="笔记1.png"><br></p>
+<p><img src="http://fp1.fghrsh.net/2021/01/09/ab142e91b3a45d93c7743bec954d9ec5.png" alt="笔记2.png"><br></p>
+<h5 id="做个计算器😜"><a href="#做个计算器😜" class="headerlink" title="做个计算器😜"></a>做个计算器😜</h5><p><font  color = blue size = 4>只学习控件方法而不实际操作还是不行的，觉得计算器对于新手来说还算好实现,就准备写个计算器</font><br></p>
+<h6 id="项目截图"><a href="#项目截图" class="headerlink" title="项目截图"></a>项目截图</h6><p><img src="http://fp1.fghrsh.net/2021/01/08/38d013ce6d255d469d9e008b2147b8d3.png" alt="项目截图.png"><br></p>
+<h6 id="界面效果"><a href="#界面效果" class="headerlink" title="界面效果"></a>界面效果</h6><p><img src="http://fp1.fghrsh.net/2021/01/08/1c51df50a927dbc0d3af9f21134e1efa.png" alt="界面效果.png"><br></p>
+<h6 id="运行效果"><a href="#运行效果" class="headerlink" title="运行效果"></a>运行效果</h6><p><img src="http://fp1.fghrsh.net/2021/01/08/35d3326bfbb37551f8e6b647b0f286e9.png" alt="运行效果.png"><br></p>
+<h6 id="总结一下"><a href="#总结一下" class="headerlink" title="总结一下"></a>总结一下</h6><font  color = blue size = 4>
+emmm，实现起来还是有一些问题的，关键对于java不够熟练，一些字符串的处理方法不会用，导致费了很多周折
+</font><br>
+  </div>
+  <!--评论块-->
+    
+
+</article>
+<nav class="post-nav">
+  <!-- Prev Nav -->
+    
+
+
+  <!-- Next Nav -->
+    
+  <a href="/2021/01/06/进出门播报/" id="post_nav-older" class="post-nav-content next-content">
+      旧篇
+  </a>
+    
+</nav>
+<div class="post-toc-btn"><i class="material-icons">format_list_numbered</i></div>
+<div class="post-toc-none"><p>(无)</p></div>
+<div class="post-toc-box">
+    <ol class="post-toc"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E5%AE%89%E8%A3%85%E4%B8%8E%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="post-toc-number">1.</span> <span class="post-toc-text">安装与环境配置</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%85%A5%E9%97%A8"><span class="post-toc-number">2.</span> <span class="post-toc-text">学习笔记(入门)
+</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E5%81%9A%E4%B8%AA%E8%AE%A1%E7%AE%97%E5%99%A8%F0%9F%98%9C"><span class="post-toc-number">3.</span> <span class="post-toc-text">做个计算器😜</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#%E9%A1%B9%E7%9B%AE%E6%88%AA%E5%9B%BE"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">项目截图</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#%E7%95%8C%E9%9D%A2%E6%95%88%E6%9E%9C"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">界面效果</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#%E8%BF%90%E8%A1%8C%E6%95%88%E6%9E%9C"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">运行效果</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#%E6%80%BB%E7%BB%93%E4%B8%80%E4%B8%8B"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">总结一下</span></a></li></ol></li></ol>
+</div>
+<!--<div class="post-back"><i class="material-icons">arrow_back</i></div>-->
+<script type="text/javascript">
+    menu();
+</script>
+  </div>
+</div>
+<div id="bottom-outer">
+  <div id="bottom-inner">
+    <a  id="top-button" onfocus="this.blur();"><div class="up upinbody" style="background-color:#26A69A"><i class="material-icons material-up">vertical_align_top</i></div></a>
+
+
+<p style="line-height: 45px">Copyright ©  2017  欢迎来到我的博客</p>
+<p style="line-height: 45px">Powered by <a href="https://hexo.io/" target="_blank"> Hexo </a> && Theme - <a href="https://github.com/moumao/hexo-theme-Vateral" target="_blank">Vateral</a></p>
+
+  </div>
+</div>
+
+<!--影集界面需要的资源-->
+
+
+
+<!-- scripts list from theme config.yml -->
+
+<script src="/js/jquery-3.1.1.min.js"></script>
+
+<script src="/js/materialize.min.js"></script>
+
+<script src="/js/main.min.js"></script>
+
+
+<script>
+    NProgress.start();
+    NProgress.done();
+    lazy();
+    links();
+    window.onpopstate = menu();
+    //pjax操作
+    $(document).pjax('a:not(.nopjax)', '#content-inner', {fragment:'#content-inner', timeout:8000});
+    $(document).on('pjax:start', NProgress.start).on('pjax:end', NProgress.done)
+        .on('pjax:end', () => {
+            dowmdiv();
+            lazy();
+            toc();
+            links();
+            menu();
+        });
+</script>
+
+</body>
+</html>
