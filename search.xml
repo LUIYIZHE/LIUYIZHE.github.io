@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>机械课程设计的软件实现</title>
+      <link href="2021/01/09/%E6%9C%BA%E6%A2%B0%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1%E7%9A%84%E8%BD%AF%E4%BB%B6%E5%AE%9E%E7%8E%B0/"/>
+      <url>2021/01/09/%E6%9C%BA%E6%A2%B0%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1%E7%9A%84%E8%BD%AF%E4%BB%B6%E5%AE%9E%E7%8E%B0/</url>
+      
+        <content type="html"><![CDATA[<h5 id="机械课程设计的软件实现"><a href="#机械课程设计的软件实现" class="headerlink" title="机械课程设计的软件实现"></a>机械课程设计的软件实现<br></h5><h6 id="网页实现"><a href="#网页实现" class="headerlink" title="网页实现"></a>网页实现<br></h6><p><font  color = blue size = 4>使用Django实现后端，HTML5实现前端，通过向日葵实现内网穿透，但是最后烂尾了，太懒没了，没干完，只实现了最简单功能</font><br><br><img src="http://fp1.fghrsh.net/2021/03/13/6a5c96b453a0776bffc2f4fbab45a760.png" alt="6a5c96b453a0776bffc2f4fbab45a760.png"></p><h6 id="安卓实现"><a href="#安卓实现" class="headerlink" title="安卓实现"></a>安卓实现<br></h6><p><font  color = blue size = 4>使用Android studio + JAVA完成，也是个半成品，没做完，只实现了最简单的功能</font><br><br><img src="http://fp1.fghrsh.net/2021/03/13/9ff3806f620cc33f29a04ea09da4d68e.png" alt="9ff3806f620cc33f29a04ea09da4d68e.png"></p><h6 id="PC端实现"><a href="#PC端实现" class="headerlink" title="PC端实现"></a>PC端实现<br></h6><p><font  color = blue size = 4>使用QT + PYTHON完成,实现了减速箱部分零件的自动化选取</font><br></p><p><img src="http://fp1.fghrsh.net/2021/03/13/634228aae6ca7d41213f0455117069fb.png" alt="634228aae6ca7d41213f0455117069fb.png"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 软件 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 记录 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>学习笔记总结</title>
       <link href="2021/01/09/%E4%B8%AA%E4%BA%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E6%80%BB%E7%BB%93/"/>
       <url>2021/01/09/%E4%B8%AA%E4%BA%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E6%80%BB%E7%BB%93/</url>
