@@ -119,7 +119,7 @@
   <div id="content-inner">
     
 <article id="post">
-  <div class="post-page-title"  style="background-color:#26A69A;background-image:url(/images/random/vateral-15.png)" >
+  <div class="post-page-title"  style="background-color:#26A69A;background-image:url(/images/random/vateral-9.png)" >
   <h2>毕业设计--离心机数据采集系统</h2>
     
   <p>作者:刘依哲 &nbsp&nbsp 发布于:<time datetime="2021-07-26T03:52:04.000Z">
@@ -156,27 +156,34 @@ C/C++的开源库Micro-RTSP是一个微型库，它可用于从资源受限的MC
 使用ESP32完成上位机与下位机的通信，上位机通过无线网络的方式将各种操控指令发送到离心机，下位机接收到指令后，按照指令内容进行开机、暂停、调速等操作，而且离心机的转速还可以通过无线网络的方式传输到上位机，而无需任何物理上的连线<br>
 该部分电路原理如图<br>
 </font>
+![](https://i.bmp.ovh/imgs/2021/07/65b7c6331e1dce22.png)
 
-<p><img src="https://i.bmp.ovh/imgs/2021/07/65b7c6331e1dce22.png"></p>
+
 <h5 id="V程序部分实现"><a href="#V程序部分实现" class="headerlink" title="V程序部分实现"></a>V程序部分实现</h5><font size = 4>   
 1.使用到的库<br>
 PyQt5(前端界面)<br>
 matplotlib(绘制参数曲线)<br>
 opencv(读取离心机内部的RTSP视频流)<br>
 socket(用于和ESP32通信，控制离心机)<br>  
-2.程序结构和系统结构如下
+2.程序结构和系统结构如下<br>
 >程序结构<br>
 ![](https://i.bmp.ovh/imgs/2021/07/4bba84b8ba36ca73.png)
 <br>
 >系统结构<br>
-![](https://i.bmp.ovh/imgs/2021/07/cb43f2fcd79baf5c.png)<br>
+![](https://i.bmp.ovh/imgs/2021/07/cb43f2fcd79baf5c.png)
+<br>
 2.程序运行效果如下<br>
->程序主界面<br>
-![](https://i.bmp.ovh/imgs/2021/07/96956d2364fd4735.png)<br>
->程序提供的速度文件编辑工具<br>
-![](https://i.bmp.ovh/imgs/2021/07/b43e6c9c96e4ada6.png)<br>
+>程序主界面
+<br>
+![](https://i.bmp.ovh/imgs/2021/07/96956d2364fd4735.png)
+<br>
+>程序提供的速度文件编辑工具
+<br>
+![](https://i.bmp.ovh/imgs/2021/07/b43e6c9c96e4ada6.png)
+<br>
 >实现视频缩放效果和图像二值化、轮廓提取<br>
-![](https://i.bmp.ovh/imgs/2021/07/64e25a715acab35c.png)<br>
+![](https://i.bmp.ovh/imgs/2021/07/64e25a715acab35c.png)
+<br>
 </font> 
 
 <h5 id="VI效果展示"><a href="#VI效果展示" class="headerlink" title="VI效果展示"></a>VI效果展示</h5><p><font size = 4>下位机<br><br></font></p>
